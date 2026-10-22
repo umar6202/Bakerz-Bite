@@ -1296,3 +1296,23 @@ function bakerzCheckoutAction() {
         cartOverlay.classList.remove("bakerz-open");
     }
 }
+
+
+
+// tick
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", function () {
+    if (window.scrollY > 300) {
+        backToTop.style.display = "flex";
+    } else {
+        backToTop.style.display = "none";
+    }
+});
+
+backToTop.addEventListener("click", function () {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
