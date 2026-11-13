@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sitemap | Bakerz Bite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --background-color--: #fff8ed;
+      --gold: #DEA347;
+      --light-purple: #d8a7ff;
+      --cream: #fff0df;
+      --hover: #511d53;
+      --white--: #ffffff;
+      --nav-bg: #3b123c;
+      --text-color--: #3b123c;
+      --purple: #6f3fa8;
+      --text-color: #120b18;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--background-color--);
+      color: var(--text-color);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navigation Bar */
+    header {
+      background-color: var(--nav-bg);
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(18, 11, 24, 0.15);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-logo span {
+      color: var(--white--);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--white--);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold);
+    }
+
+    /* Hero Banner */
+    .sitemap-hero {
+      background: linear-gradient(135deg, var(--nav-bg) 0%, var(--hover) 100%);
+      color: var(--white--);
+      text-align: center;
+      padding: 4rem 1.5rem 3.5rem;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .breadcrumb {
+      font-size: 0.85rem;
+      color: var(--light-purple);
+      margin-bottom: 0.75rem;
+    }
+
+    .breadcrumb a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .sitemap-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white--);
+      margin-bottom: 0.75rem;
+    }
+
+    .sitemap-hero p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--cream);
+      font-size: 1.05rem;
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 3.5rem 5%;
+    }
+
+    /* Search / Filter Bar */
+    .filter-bar {
+      max-width: 480px;
+      margin: 0 auto 2.75rem;
+      position: relative;
+    }
+
+    .filter-bar input {
+      width: 100%;
+      padding: 0.85rem 1.25rem;
+      border: 2px solid var(--cream);
+      border-radius: 50px;
+      background-color: var(--white--);
+      color: var(--text-color);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .filter-bar input:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 4px rgba(111, 63, 168, 0.12);
+    }
+
+    /* Sitemap Grid */
+    .sitemap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      gap: 2rem;
+    }
+
+    .sitemap-card {
+      background-color: var(--white--);
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+      border: 1px solid rgba(59, 18, 60, 0.08);
+      box-shadow: 0 8px 24px rgba(59, 18, 60, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .sitemap-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(59, 18, 60, 0.1);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 2px solid var(--cream);
+    }
+
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background-color: var(--cream);
+      color: var(--text-color--);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: 1px solid var(--gold);
+    }
+
+    .sitemap-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--text-color--);
+    }
+
+    .sitemap-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .sitemap-list li a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      padding: 0.45rem 0.65rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .sitemap-list li a::after {
+      content: "→";
+      color: var(--gold);
+      font-weight: 700;
+      transition: transform 0.2s ease;
+    }
+
+    .sitemap-list li a:hover {
+      background-color: var(--cream);
+      color: var(--hover);
+      padding-left: 0.9rem;
+    }
+
+    .sitemap-list li a:hover::after {
+      transform: translateX(4px);
+      color: var(--purple);
+    }
+
+    .sub-list {
+      list-style: none;
+      margin-top: 0.4rem;
+      padding-left: 1.1rem;
+      border-left: 2px solid var(--light-purple);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .sub-list li a {
+      font-size: 0.9rem;
+      color: #4a3b52;
+      padding: 0.3rem 0.5rem;
+    }
+
+    .sub-list li a::after {
+      content: "•";
+      color: var(--purple);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--nav-bg);
+      color: var(--cream);
+      text-align: center;
+      padding: 2rem 5%;
+      margin-top: auto;
+      border-top: 3px solid var(--gold);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--light-purple);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .copyright {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="https://umar6202.github.io/Bakerz-Bite/" class="brand-logo">Bakerz <span>Bite</span></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="sitemap.html" class="active">Sitemap</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="sitemap-hero">
+    <div class="breadcrumb">
+      <a href="https://umar6202.github.io/Bakerz-Bite/">Home</a> / Sitemap
+    </div>
+    <h1>Website Sitemap</h1>
+    <p>Explore every corner of Bakerz Bite—from our freshly baked artisan treats to custom cake orders and store locations.</p>
+  </section>
+
+  <!-- Main Sitemap Directory -->
+  <main>
+    <div class="filter-bar">
+      <input type="text" id="sitemapSearch" placeholder="Quick search pages (e.g., Cakes, Contact, FAQ)..." aria-label="Search sitemap links" />
+    </div>
+
+    <div class="sitemap-grid" id="sitemapGrid">
+      <!-- Card 1: Main Pages -->
+      <section class="sitemap-card">
+        <div class="card-header">
+          <div class="card-icon">✦</div>
+          <h2>Main Pages</h2>
+        </div>
+        <ul class="sitemap-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us & Our Story</a></li>
+          <li><a href="gallery.html">Bakery Gallery</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="locations.html">Store Locator & Hours</a></li>
+        </ul>
+      </section>
+
+      <!-- Card 2: Bakery Menu -->
+      <section class="sitemap-card">
+        <div class="card-header">
+          <div class="card-icon">🥐</div>
+          <h2>Bakery Menu</h2>
+        </div>
+        <ul class="sitemap-list">
+          <li>
+            <a href="menu.html">Full Menu</a>
+            <ul class="sub-list">
+              <li><a href="menu.html#cakes">Signature & Celebration Cakes</a></li>
+              <li><a href="menu.html#pastries">Pastries & Croissants</a></li>
+              <li><a href="menu.html#breads">Artisan Breads & Loaves</a></li>
+              <li><a href="menu.html#cupcakes">Cupcakes & Muffins</a></li>
+              <li><a href="menu.html#cookies">Cookies, Brownies & Tarts</a></li>
+              <li><a href="menu.html#beverages">Coffee & Artisanal Beverages</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+
+
+      <!-- Card 4: Support & Legal -->
+      <section class="sitemap-card">
+        <div class="card-header">
+          <div class="card-icon">📋</div>
+          <h2>Customer Info & Legal</h2>
+        </div>
+        <ul class="sitemap-list">
+          <li><a href="faq.html">Frequently Asked Questions</a></li>
+          <li><a href="allergens.html">Allergen & Dietary Guide</a></li>
+          <li><a href="delivery.html">Delivery & Pickup Policy</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="sitemap.html">Sitemap</a>
+    </div>
+    <p class="copyright">&copy; 2026 Bakerz Bite. Freshly baked with love.</p>
+  </footer>
+
+  <!-- Live Filter Script -->
+  <script>
+    const searchInput = document.getElementById('sitemapSearch');
+    const cards = document.querySelectorAll('.sitemap-card');
+
+    searchInput.addEventListener('input', function () {
+      const query = this.value.toLowerCase().trim();
+
+      cards.forEach(card => {
+        const items = card.querySelectorAll('.sitemap-list > li');
+        let hasVisibleItem = false;
+
+        items.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          if (text.includes(query)) {
+            item.style.display = '';
+            hasVisibleItem = true;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        card.style.display = hasVisibleItem ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
